@@ -1,0 +1,29 @@
+.f-left{
+    width: 50%;
+    h1{
+        color:brown;
+         text-align: left;
+       
+    }
+    li{
+        font-size: x-large;
+        color:#062652;
+        font-weight: lighter;
+        text-align: left;
+    }
+}
+.f-right{
+    width: 50%;
+    .item{
+        padding: 10px;
+        text-align: left;
+        border-radius: 10px;
+        width: 60%;
+       
+        background-color: aquamarine;
+
+        >button{
+            background-color: transparent;
+        }
+    }
+}
