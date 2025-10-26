@@ -27,6 +27,15 @@ export default function Header() {
                         <li className="nav-item">
                             <NavLink to="/" className="nav-link active" aria-current="page">Welcome</NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink to="#" className="nav-link active" aria-current="page">Books</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to="#" className="nav-link active" aria-current="page">Teachers</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to="#" className="nav-link active" aria-current="page">Authors</NavLink>
+                        </li>
 
                     </ul>
 
@@ -57,6 +66,7 @@ export default function Header() {
 
                             }
                         </li>
+
 
                         {!user &&
                             <li className="nav-item d-flex align-items-center me-3">
