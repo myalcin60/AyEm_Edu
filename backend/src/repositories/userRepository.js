@@ -26,5 +26,14 @@ const findByEmail =async(email)=>{
         return null;
     }
 }
-
-export default { findByEmail,save };
+const allUsers = async()=>{
+     try {
+        const SELECT = "SELECT * FROM users "
+        const users = await connection.query(SELECT);
+        return users;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+export default { findByEmail,save,allUsers };

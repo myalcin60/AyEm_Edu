@@ -11,7 +11,7 @@ export default function Header() {
     function logout() {
         setUser(null);
         localStorage.removeItem('user');
-        navigate('/acsess');
+        navigate('/access');
     }
     return (
         <><nav className=" box-shadow navbar navbar-expand-lg navbar-warning-subtle  bg-light fixed-top mb-5">
@@ -28,7 +28,7 @@ export default function Header() {
                             <NavLink to="/" className="nav-link active" aria-current="page">Welcome</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="#" className="nav-link active" aria-current="page">Books</NavLink>
+                            <NavLink to="/books" className="nav-link active" aria-current="page">Books</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink to="#" className="nav-link active" aria-current="page">Teachers</NavLink>

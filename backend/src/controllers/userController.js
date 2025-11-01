@@ -43,4 +43,13 @@ const login = async (req, res, next) => {
 
 }
 
-export default { login, signup };
+const allUsers =async(req, res)=>{
+    try {
+        const users= await userRepository.allUsers();
+        res.status(200).json(users)
+    } catch (error) {
+        return res.status(500).json({ error:error.message });
+    }
+}
+
+export default { login, signup,allUsers };

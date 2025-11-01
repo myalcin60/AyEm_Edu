@@ -2,12 +2,21 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import session from "express-session";
-import userRouter from "./routes/userRouter.js";
-import bookRouter from "./routes/bookRouter.js";
+
 import path from "path";
+
 import userModel from "./models/userModel.js";
 import bookModel from "./models/bookModel.js";
 import favoriteModel from "./models/favoriteModel.js";
+import cartItemsModel from "./models/cartModels.js";
+import libraryModel from './models/libraryModel.js';
+
+
+import {bookRouter,
+    libraryRouter,
+    paymentRouter,
+    shopFlowRouter,
+    userRouter}  from './routes/indexRouter.js';
 
 dotenv.config();
 
@@ -31,16 +40,17 @@ app.use(session({
 // servir les fichiers statiques depuis le dossier "public"
 app.use(express.static('public'))
 
-// app.use((req, res, next) => {
-//   res.locals.user = req.session.user || null;
-//   next();
-// });
 
 
 // // Mapping entre routes et le routeur
 
 app.use('/', bookRouter);
 app.use('/', userRouter);
+app.use('/', shopFlowRouter);
+app.use( '/', paymentRouter);
+app.use('/', libraryRouter);
+
+
 
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
@@ -81,6 +91,8 @@ app.all("/*splat", (req, res) => {
 userModel.createUserTable();
 bookModel.createBookTable();
 favoriteModel.createFavoriteBookTable();
+cartItemsModel.createCartItemsTable();
+libraryModel.createLibraryTable();
 // Sunucu başlat
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

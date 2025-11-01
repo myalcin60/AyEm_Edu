@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { useContext } from "react";
+import { BsCartPlus, BsCartCheck } from "react-icons/bs";
 
 
 export default function Navbar() {
@@ -8,11 +9,11 @@ export default function Navbar() {
 
 
     return (
-        <div className="mt-5 box-shadow ">
+        <div className="mt-5 box-shadow d-flex justify-content-between">
 
-            <ul className="nav">
+            <ul className="nav" >
 
-                <li className="nav-item">
+                <li className="nav-item" >
                     <NavLink to="/library" className="nav-link">My Library</NavLink>
                 </li>
                 {(user.role==='author' || user.role==='teacher') &&
@@ -25,6 +26,11 @@ export default function Navbar() {
                     <NavLink to="/favorites" className="nav-link">Favorites</NavLink>
                 </li>
 
+            </ul>
+            <ul className="nav">
+                <li className="nav-item">
+                    <NavLink to="/carts" className="nav-link">{<BsCartCheck size={20} color="orange" />}</NavLink>
+                </li>
             </ul>
         </div>
     )

@@ -3,13 +3,12 @@ import Slider from "react-slick";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
-import axios from "../../../axios.config";
-import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
-export default function BookCarousel() {
-  const { books, user, favorites, setFavorites } = useContext(GlobalContext);
- 
+import BookCard from "../BookCard/BookCard";
+
+export default function BookSlider() {
+  const { books, user } = useContext(GlobalContext);
+
   const settings = {
     dots: true,             // Alt navigasyon noktaları
     infinite: true,         // Sonsuz döngü
@@ -33,39 +32,20 @@ export default function BookCarousel() {
       }
     ]
   };
- 
 
-  return (
+
+ return (
     <div className="book-carousel my-5 container">
-      <h2 className="text-center mb-4 fw-bold"> Books of the Mounth</h2>
+      <h2 className="text-center mb-4 fw-bold">Books of the Month</h2>
       <Slider {...settings}>
-        {books.map((b, index) => (
-          <div key={index} className="px-2">
-            <div className="card border-0 shadow-sm rounded-4 overflow-hidden">
-              <img
-                src={`http://localhost:5000${b.cover_image}` || "/placeholder.jpg"}
-                alt={b.title}
-                className="card-img-top"
-                style={{ height: "250px", objectFit: "cover" }}
-              />
-              <div className="card-body text-center">
-                <h5 className="card-title fw-bold">{b.title}</h5>
-                <h6 className="card-subtitle mb-2 text-muted">{b.lastName} {b.firstName}</h6>
-                <p className="card-text text-muted">{b.description}</p>
-                <h6>{b.price} €</h6>
-                <h6>book Id : {b.id}</h6>
-                <div className="d-flex justify-content-center gap-2">
-                  <a href={b.file_path} className="btn btn-primary" download>
-                    Download
-                  </a>
-                  <FavoriteButton bookId={b.id} />                
-                </div>
-
-              </div>
-            </div>
+        {books.map((book) => (
+          <div key={book.id} className="px-2">
+            <BookCard b={book} />
           </div>
         ))}
       </Slider>
     </div>
   );
 }
+
+
